@@ -13,7 +13,7 @@ const Invoice = types
     }
   }))
   .views(self => ({
-    status() {
+    get status() {
       return self.is_paid ? "Paid" : "Not Paid";
     }
   }));

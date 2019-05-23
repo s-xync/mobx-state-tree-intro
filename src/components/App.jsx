@@ -7,7 +7,7 @@ function App({ invoice }) {
   return (
     <div className="App">
       Invoicer
-      <h1>{invoice.status()}</h1>
+      <h1>{invoice.status}</h1>
       {!invoice.is_paid && <button onClick={invoice.markPaid}>Pay</button>}
       <br />
       <br />
@@ -52,7 +52,7 @@ function App({ invoice }) {
         <br />
         <input type="submit" />
       </form>
-      <h2>Total is ${invoice.itemList.total().toFixed(2)}</h2>
+      <h2>Total is ${invoice.itemList.total.toFixed(2)}</h2>
       <ul>
         {invoice.itemList.items.map((item, index) => (
           <Item item={item} key={index} />

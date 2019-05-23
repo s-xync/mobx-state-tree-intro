@@ -19,7 +19,7 @@ const Item = types
     }
   }))
   .views(self => ({
-    total() {
+    get total() {
       return self.quantity * self.price;
     }
   }));

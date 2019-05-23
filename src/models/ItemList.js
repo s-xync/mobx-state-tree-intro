@@ -14,8 +14,8 @@ const ItemList = types
     }
   }))
   .views(self => ({
-    total() {
-      return self.items.reduce((sum, item) => sum + item.total(), 0);
+    get total() {
+      return self.items.reduce((sum, item) => sum + item.total, 0);
     }
   }));
 
