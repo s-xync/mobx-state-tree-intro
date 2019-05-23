@@ -1,6 +1,8 @@
 import React from "react";
 import { observer } from "mobx-react";
 
+import Item from "./Item";
+
 function App({ invoice }) {
   return (
     <div className="App">
@@ -14,8 +16,8 @@ function App({ invoice }) {
           e.preventDefault();
           invoice.itemList.add({
             name: this.nameInput.value,
-            price: parseInt(this.priceInput.value, 10),
-            quantity: parseFloat(this.quantityInput.value)
+            price: parseFloat(this.priceInput.value),
+            quantity: parseInt(this.quantityInput.value, 10)
           });
           e.target.reset();
           this.nameInput.focus();
@@ -50,6 +52,12 @@ function App({ invoice }) {
         <br />
         <input type="submit" />
       </form>
+      <h2>Total is ${invoice.itemList.total().toFixed(2)}</h2>
+      <ul>
+        {invoice.itemList.items.map((item, index) => (
+          <Item item={item} key={index} />
+        ))}
+      </ul>
     </div>
   );
 }
